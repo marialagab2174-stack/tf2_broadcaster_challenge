@@ -1,0 +1,8 @@
+fleet_monitor:
+  ros__parameters:
+    monitor_frequency: 10.0
+    robots: ["robot1", "robot2", "robot3"]
+    safe_zones:
+      robot1: [0.0, 0.0, 5.0]  # [x, y, radius]
+      robot2: [5.0, 5.0, 3.0]
+      robot3: [-2.0, 2.0, 4.0]
