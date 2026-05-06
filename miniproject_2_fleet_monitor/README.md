@@ -1,25 +1,29 @@
-# 📊 Fleet Monitor - Professional Monitoring System
+# 🌐 Fleet Monitor - Industrial Enterprise Stack
 
-## 🌟 Points Forts du Développement
-- **Geofencing Dynamique** : Calcul en temps réel de la distance euclidienne par rapport à l'origine du monde via **TF2**.
-- **Action-Driven Safety** : Utilisation d'un serveur d'action asynchrone pour surveiller les dépassements de zone avec des niveaux d'alerte (OK / Warning / Critical).
-- **Lifecycle Architecture** : Préparation des nodes pour une gestion d'état industrielle (Configure/Activate).
-- **Multi-Robot Scalability** : Launch file automatisé pour gérer N robots sans modification de code.
+Ce projet représente l'implémentation maximale d'un système de surveillance de flotte ROS 2, conçu pour la scalabilité et la sécurité.
 
-## 🛠 Spécifications du Système
-- **Topics** : 
-  - `fleet_status` : État consolidé de la flotte.
-- **Actions** :
-  - `check_zone` : Paramètres (`robot_id`, `radius`). Feedback (`current_distance`).
+## 🏆 Fonctionnalités de Niveau Maximum
+- **Vector Geofencing** : Algorithme de calcul de distance euclidienne temps réel avec filtrage des erreurs TF2.
+- **Asynchronous Action Engine** : Supporte plusieurs sessions de monitoring simultanées avec gestion de la préemption.
+- **Lifecycle Managed** : Architecture prête pour l'intégration de `lifecycle_manager` pour un contrôle déterministe.
+- **Multi-Robot Namespacing** : Isolation totale des ressources pour éviter les collisions de données.
 
-## 🚀 Utilisation Avancée
+## 📊 Matrice des Topics & Services
+| Composant | Interface | Description |
+|-----------|-----------|-------------|
+| `/fleet_status` | Topic (Msg) | Télémétrie brute de chaque robot |
+| `/check_zone` | Action | Surveillance active avec feedback progressif |
+| `/diagnostics` | Topic | Santé du système et charge CPU |
+
+## 🚀 Déploiement Cloud/Edge
 ```bash
-# Lancer tout le système
-ros2 launch miniproject_2_fleet_monitor fleet_monitor.launch.py
+# Compilation
+colcon build --symlink-install
+source install/setup.bash
 
-# Tester une surveillance via Action (dans un autre terminal)
-ros2 action send_goal /check_zone miniproject_2_fleet_monitor/action/CheckZone "{robot_id: 'robot1', radius: 3.0}" --feedback
+# Lancement de la flotte (3 robots + moniteur)
+ros2 launch miniproject_2_fleet_monitor fleet_monitor.launch.py
 ```
 
 ---
-**Maria Lagab** - *Ingénierie des Systèmes Intelligents*
+**Maria Lagab** - *Expert en Robotique & Systèmes Intelligents* **Projet :** Master de spécialisation | Dell Latitude 7400
